@@ -1,10 +1,11 @@
 [BITS 32]
 global _start
+global problem
 
 extern kernel_main
 
-CODE_SEGMENT equ 0X08
-DATA_SEGMENT equ 0X10
+CODE_SEGMENT equ 0X08  ;Kernel code segment (for IDT selector)
+DATA_SEGMENT equ 0X10  ;Kernel data segment (for IDT selector)
 
 _start:
     mov ax, DATA_SEGMENT

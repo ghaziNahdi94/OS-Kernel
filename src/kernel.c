@@ -1,5 +1,6 @@
 
 #include "kernel.h"
+#include "idt/idt.h"
 #include <stdint.h>
 #include <stddef.h>
 
@@ -8,13 +9,14 @@ int row = 0;
 int column = 0;
 char color = 11;
 
+extern void problem();
+
 void kernel_main() {
-
     init_terminal();
+    print("OS starting....\n");
 
-    print("CLUB AFRICAIN 1920\n");
-    print("Ghazi\n");
-    print("Nehdi\n");
+    idt_init();
+    problem();
 }
 
 void init_terminal() {
