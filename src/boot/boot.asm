@@ -46,20 +46,20 @@ gdt_null:
 gdt_code:  ;CS should be point to this
     ; Segment descriptor for code segment
     dw 0xffff           ; Limit 0-15 bits
-    dw 0         ; Base 0-15 bits
-    db 0             ; Base 16-23 bits
+    dw 0                ; Base 0-15 bits
+    db 0                ; Base 16-23 bits
     db 0x9a             ; Access rights
-    db 11001111b             ; Limit 16-19 bits
-    db 0             ; Base 24-31 bits
+    db 11001111b        ; Limit 16-19 bits
+    db 0                ; Base 24-31 bits
 
 gdt_data: ;DS, SS, ES, FS , GS
     ; Segment descriptor for data segment
     dw 0xffff           ; Limit 0-15 bits
-    dw 0           ; Base 0-15 bits
-    db 0             ; Base 16-23 bits
+    dw 0                ; Base 0-15 bits
+    db 0                ; Base 16-23 bits
     db 0x92             ; Access rights
-    db 11001111b             ; Limit 16-19 bits
-    db 0             ; Base 24-31 bits
+    db 11001111b        ; Limit 16-19 bits
+    db 0                ; Base 24-31 bits
 
 gdt_end:
 
@@ -75,7 +75,7 @@ load32:
     call ata_lba_read
     jmp CODE_SEGMENT:0x100000
 
-;Driver to read from the hard disk
+;Driver to read from the hard disk  ==>> TO LOAD THE KERNEL CODE TO THE RAM
 ata_lba_read:
     mov ebx, eax ;Backup the LBA
     ;Send the highest 8 bits of the lba to hard disk controller
