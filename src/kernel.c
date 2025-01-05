@@ -1,6 +1,7 @@
 
 #include "kernel.h"
 #include "idt/idt.h"
+#include "io/io.h"
 #include <stdint.h>
 #include <stddef.h>
 
@@ -16,7 +17,7 @@ void kernel_main() {
     print("OS starting....\n");
 
     idt_init();
-    problem();
+    writeByte(0x60, 0xff);
 }
 
 void init_terminal() {
