@@ -16,8 +16,12 @@ void kernel_main() {
     init_terminal();
     print("OS starting....\n");
 
+    // Initialize the  interrupt descriptor table
     idt_init();
-    writeByte(0x60, 0xff);
+
+    for(int i=0; i<40000;i++){}
+    // Enable the system interrupts
+    enable_interrupts();
 }
 
 void init_terminal() {
